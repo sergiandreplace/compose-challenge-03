@@ -10,4 +10,18 @@
       the License.
       -->
     <string name="app_name">AndroidDevChallenge</string>
+    <string name="welcome_signup">Sign up</string>
+    <string name="welcome_login">Log in</string>
+    <string name="login_title">Log in</string>
+    <string name="login_action">Log in</string>
+    <string name="login_email_label">Email address</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_signup_preamble">Don\'t have an account?</string>
+    <string name="login_signup_link">Sign up</string>
+    <string name="home_favorite_collections">Favorite Collections</string>
+    <string name="home_align_your_body">Align your body</string>
+    <string name="home_align_your_mind">Align your mind</string>
+    <string name="navigation_home">Home</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="home_fab_description">Play</string>
 </resources>

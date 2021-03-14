@@ -16,31 +16,41 @@
 package com.example.androiddevchallenge
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.ui.pages.HomePage
+import com.example.androiddevchallenge.ui.pages.LoginPage
+import com.example.androiddevchallenge.ui.pages.WelcomePage
 import com.example.androiddevchallenge.ui.theme.MyTheme
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
         setContent {
-            MyTheme {
-                MyApp()
-            }
+            MyApp()
         }
     }
 }
 
-// Start building your app here!
 @Composable
 fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
+    val navController = rememberNavController()
+    MyTheme {
+        NavHost(navController = navController, startDestination = "welcome") {
+            composable("welcome") { WelcomePage(navController) }
+            composable("login") { LoginPage(navController) }
+            composable("home") { HomePage() }
+        }
     }
 }
 
@@ -49,6 +59,7 @@ fun MyApp() {
 fun LightPreview() {
     MyTheme {
         MyApp()
+
     }
 }
 
@@ -58,4 +69,5 @@ fun DarkPreview() {
     MyTheme(darkTheme = true) {
         MyApp()
     }
+
 }
