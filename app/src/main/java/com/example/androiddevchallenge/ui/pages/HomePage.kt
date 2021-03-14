@@ -1,15 +1,51 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.ui.pages
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.FabPosition
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PlayArrow
@@ -26,9 +62,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.data.*
+import com.example.androiddevchallenge.data.AlignTopic
+import com.example.androiddevchallenge.data.FavoriteCollection
+import com.example.androiddevchallenge.data.bodyAlignments
+import com.example.androiddevchallenge.data.favoriteCollections
+import com.example.androiddevchallenge.data.mindAlignments
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import java.util.*
+import java.util.Locale
 
 @Composable
 fun HomePage() {
@@ -45,7 +85,8 @@ fun HomePage() {
 @Composable
 private fun HomeBottomBar() {
     BottomNavigation(backgroundColor = MaterialTheme.colors.background) {
-        BottomNavigationItem(selected = true, onClick = { /*TODO*/ },
+        BottomNavigationItem(
+            selected = true, onClick = { /*TODO*/ },
             icon = {
                 Icon(
                     modifier = Modifier.size(18.dp),
@@ -60,7 +101,8 @@ private fun HomeBottomBar() {
                 )
             }
         )
-        BottomNavigationItem(selected = true, onClick = { /*TODO*/ },
+        BottomNavigationItem(
+            selected = true, onClick = { /*TODO*/ },
             icon = {
                 Icon(
                     modifier = Modifier.size(18.dp),
@@ -76,7 +118,6 @@ private fun HomeBottomBar() {
             }
         )
     }
-
 }
 
 @Composable
@@ -96,9 +137,11 @@ private fun HomeFab() {
 private fun HomeBody(paddingValues: PaddingValues) {
     val (searchText, setSearchText) = remember { mutableStateOf("") }
     Column {
-        Column(Modifier
-            .verticalScroll(rememberScrollState())
-            .padding(paddingValues)) {
+        Column(
+            Modifier
+                .verticalScroll(rememberScrollState())
+                .padding(paddingValues)
+        ) {
             Spacer(Modifier.height(56.dp))
             TextField(
                 value = searchText,
@@ -124,8 +167,6 @@ private fun HomeBody(paddingValues: PaddingValues) {
             )
         }
     }
-
-
 }
 
 @Composable
@@ -145,11 +186,12 @@ private fun FavoriteCollections(title: String, favoriteCollections: List<Favorit
 
 @Composable
 private fun Collection(collection: FavoriteCollection) {
-    Surface(Modifier
-        .width(192.dp)
-        .height(56.dp)
-        .clip(MaterialTheme.shapes.small)
-        .clickable { }
+    Surface(
+        Modifier
+            .width(192.dp)
+            .height(56.dp)
+            .clip(MaterialTheme.shapes.small)
+            .clickable { }
     ) {
         Row {
             Image(
@@ -158,12 +200,14 @@ private fun Collection(collection: FavoriteCollection) {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(56.dp)
             )
-            Text(collection.title,
+            Text(
+                collection.title,
                 style = MaterialTheme.typography.h3,
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
                     .padding(start = 16.dp, end = 8.dp)
-                    .width((192 - 56).dp))
+                    .width((192 - 56).dp)
+            )
         }
     }
 }
@@ -210,11 +254,13 @@ private fun HomeSection(title: String, content: @Composable ColumnScope.() -> Un
 
 @Composable
 private fun SectionTitle(title: String) {
-    Text(title.toUpperCase(Locale.getDefault()),
+    Text(
+        title.toUpperCase(Locale.getDefault()),
         style = MaterialTheme.typography.h2,
         modifier = Modifier
             .paddingFromBaseline(top = 40.dp)
-            .padding(start = 16.dp))
+            .padding(start = 16.dp)
+    )
 }
 
 @Composable
@@ -227,7 +273,6 @@ private fun HomeSectionLazyRow(content: LazyListScope.() -> Unit) {
         content()
     }
 }
-
 
 @Preview("Home", heightDp = 640, widthDp = 320)
 @Composable

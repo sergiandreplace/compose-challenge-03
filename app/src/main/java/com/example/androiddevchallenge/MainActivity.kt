@@ -29,12 +29,13 @@ import com.example.androiddevchallenge.ui.pages.LoginPage
 import com.example.androiddevchallenge.ui.pages.WelcomePage
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
 
         setContent {
             MyApp()
@@ -59,7 +60,6 @@ fun MyApp() {
 fun LightPreview() {
     MyTheme {
         MyApp()
-
     }
 }
 
@@ -69,5 +69,4 @@ fun DarkPreview() {
     MyTheme(darkTheme = true) {
         MyApp()
     }
-
 }

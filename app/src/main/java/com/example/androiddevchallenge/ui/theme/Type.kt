@@ -15,7 +15,6 @@
  */
 package com.example.androiddevchallenge.ui.theme
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -25,10 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontSynthesis
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.BaselineShift
-import androidx.compose.ui.text.style.TextGeometricTransform
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.R
@@ -79,7 +75,7 @@ val typography = Typography(
     ),
     caption = TextStyle(
         fontFamily = kulimPark,
-        fontWeight = FontWeight.Normal ,
+        fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         letterSpacing = 1.15.sp
     ),

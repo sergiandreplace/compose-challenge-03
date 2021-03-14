@@ -17,7 +17,6 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-
 val gray900 = Color(0xFF333333)
 val rust300 = Color(0xFFE1AFAF)
 val rust600 = Color(0xFF886363)
