@@ -116,7 +116,6 @@ private fun LoginBody(navController: NavHostController) {
                 .paddingFromBaseline(top = 32.dp)
                 .align(Alignment.CenterHorizontally)
         )
-
     }
 }
 
