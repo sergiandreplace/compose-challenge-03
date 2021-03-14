@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
@@ -44,8 +43,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.PlayArrow
@@ -67,6 +64,7 @@ import com.example.androiddevchallenge.data.FavoriteCollection
 import com.example.androiddevchallenge.data.bodyAlignments
 import com.example.androiddevchallenge.data.favoriteCollections
 import com.example.androiddevchallenge.data.mindAlignments
+import com.example.androiddevchallenge.ui.components.SootheTextField
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import java.util.Locale
 
@@ -143,15 +141,11 @@ private fun HomeBody(paddingValues: PaddingValues) {
                 .padding(paddingValues)
         ) {
             Spacer(Modifier.height(56.dp))
-            TextField(
+            SootheTextField(
                 value = searchText,
                 onValueChange = setSearchText,
                 label = { Text(stringResource(R.string.login_email_label)) },
-                colors = TextFieldDefaults.textFieldColors(backgroundColor = MaterialTheme.colors.surface),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp)
-                    .padding(horizontal = 16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
             FavoriteCollections(
                 title = stringResource(R.string.home_favorite_collections),
